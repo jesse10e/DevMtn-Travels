@@ -1,5 +1,5 @@
 angular.module('devmtnTravel').service('mainSrv', function(){
-    this.travelInfo = [{
+    var travelInfo = [{
         country: 'United States',
         image: "../img/US.jpg",
         desc: 'The U.S. is a country of 50 states covering a vast swath of North America. Major Atlantic Coast cities are New York, and capital Washington, DC',
@@ -15,7 +15,7 @@ angular.module('devmtnTravel').service('mainSrv', function(){
         desc: "Australia is a country and continent surrounded by the Indian and Pacific oceans. Its major cities – Sydney, Brisbane, Melbourne, Perth, Adelaide – are coastal. Its capital, Canberra, is inland. ",
         price: 1112
     }];
-		this.packageInfo = [{
+		var packageInfo = [{
 				city: "Bordeaux",
 				country: "France",
 				image: "../img/Borduaex.jpg",
@@ -79,5 +79,18 @@ angular.module('devmtnTravel').service('mainSrv', function(){
 				id: 3544,
 				price: 1722.12
 			},
-		]
+		];
+    this.locations = function() {
+      return travelInfo;
+    };
+    this.packages = function() {
+      return packageInfo;
+    }
+    this.findPackageById = function(id) {
+      for (var i = 0; i < packageInfo.length; i++) {
+        if (packageInfo[i].id == id){
+          return packageInfo[i];
+        }
+      }
+    }
 })
